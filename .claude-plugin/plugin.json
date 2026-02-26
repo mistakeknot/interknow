@@ -1,0 +1,31 @@
+{
+  "name": "interknow",
+  "version": "0.1.0",
+  "description": "Knowledge compounding — durable pattern repository with provenance tracking, temporal decay, and semantic retrieval via qmd.",
+  "author": {
+    "name": "mistakeknot"
+  },
+  "license": "MIT",
+  "keywords": [
+    "knowledge",
+    "compounding",
+    "patterns",
+    "semantic-search",
+    "qmd",
+    "mcp-server"
+  ],
+  "skills": [
+    "./skills/compound",
+    "./skills/recall"
+  ],
+  "mcpServers": {
+    "qmd": {
+      "type": "stdio",
+      "command": "${CLAUDE_PLUGIN_ROOT}/scripts/launch-qmd.sh",
+      "args": [
+        "mcp"
+      ]
+    }
+  },
+  "hooks": "./hooks/hooks.json"
+}
