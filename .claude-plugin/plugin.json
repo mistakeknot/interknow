@@ -26,6 +26,5 @@
         "mcp"
       ]
     }
-  },
-  "hooks": "./hooks/hooks.json"
+  }
 }
