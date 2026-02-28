@@ -1,3 +1,7 @@
+---
+description: "Knowledge Recall"
+---
+
 # /interknow:recall — Knowledge Recall
 
 Query the knowledge base for patterns relevant to a topic or question.

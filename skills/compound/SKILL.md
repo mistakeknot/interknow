@@ -1,3 +1,7 @@
+---
+description: "Knowledge Compounding"
+---
+
 # /interknow:compound — Knowledge Compounding
 
 Extract durable patterns from review findings and save them as knowledge entries.
