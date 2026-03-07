@@ -27,16 +27,24 @@ Compose a semantic query from:
 
 ### 3. Search knowledge
 
-**With qmd:** Use `qmd:vsearch` against the knowledge directory:
+> **Note:** Knowledge entries have been converged into `docs/solutions/`. Search there as the primary source. `config/knowledge/` is a legacy fallback.
+
+**Primary: docs/solutions/**
+
+**With qmd:** Use `qmd:vsearch` against the solutions directory:
 ```
-qmd:vsearch query="<semantic query>" path="${CLAUDE_PLUGIN_ROOT}/config/knowledge" top_k=10
+qmd:vsearch query="<semantic query>" path="docs/solutions" top_k=10
 ```
 
-**Without qmd (fallback):** Read all `config/knowledge/*.md` files and filter by keyword matching.
+**Without qmd (fallback):** Read `docs/solutions/**/*.md` files and filter by keyword matching. Exclude `INDEX.md`, `critical-patterns.md`, and `search-surfaces.md`.
+
+**Legacy fallback: config/knowledge/**
+
+If no results found in `docs/solutions/`, also check `${CLAUDE_PLUGIN_ROOT}/config/knowledge/*.md` for any unmigrated entries.
 
 ### 4. Filter and rank
 
-- Exclude archived entries (in `config/knowledge/archive/`)
+- Exclude archived entries (in `docs/solutions/archive/` or `config/knowledge/archive/`)
 - Prioritize entries with recent `lastConfirmed` dates
 - Prioritize `provenance: independent` over `provenance: primed`
 - Cap at top 5 results

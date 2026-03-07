@@ -1,14 +1,18 @@
 ---
-description: "Knowledge Compounding"
+description: "Knowledge Compounding (deprecated — use /clavain:compound)"
 ---
 
 # /interknow:compound — Knowledge Compounding
+
+> **Deprecated:** Knowledge entries have been converged into `docs/solutions/`. Use `/clavain:compound` instead, which writes to `docs/solutions/` with enum-validated schema and provenance tracking.
 
 Extract durable patterns from review findings and save them as knowledge entries.
 
 ## When to use
 
 After a flux-drive review completes, or when you discover a reusable pattern worth preserving across sessions.
+
+**Preferred:** Use `/clavain:compound` instead — it writes to `docs/solutions/` with the converged schema (compound docs format + interknow provenance fields).
 
 ## Input
 

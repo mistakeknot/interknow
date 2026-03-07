@@ -1,35 +1,38 @@
 #!/usr/bin/env bash
-# interknow SessionStart hook — report knowledge stats
+# interknow SessionStart hook — report knowledge stats from docs/solutions/
 set -euo pipefail
 
+# Primary: docs/solutions/ (converged knowledge store)
+SOLUTIONS_DIR="docs/solutions"
+# Legacy fallback: config/knowledge/
 KNOWLEDGE_DIR="${CLAUDE_PLUGIN_ROOT:-$(dirname "$(dirname "$0")")}/config/knowledge"
 
-if [[ ! -d "$KNOWLEDGE_DIR" ]]; then
-    exit 0
-fi
-
-# Count active entries (exclude README, archive dir)
+# Count docs/solutions/ entries (exclude INDEX.md, critical-patterns.md, search-surfaces.md)
 count=0
-for f in "$KNOWLEDGE_DIR"/*.md; do
-    [[ "$(basename "$f")" == "README.md" ]] && continue
-    [[ -f "$f" ]] && count=$((count + 1))
-done
-
-if (( count == 0 )); then
-    exit 0
+if [[ -d "$SOLUTIONS_DIR" ]]; then
+    while IFS= read -r -d '' f; do
+        name="$(basename "$f")"
+        [[ "$name" == "INDEX.md" || "$name" == "critical-patterns.md" || "$name" == "search-surfaces.md" ]] && continue
+        count=$((count + 1))
+    done < <(find "$SOLUTIONS_DIR" -name "*.md" -print0 2>/dev/null)
 fi
 
-# Count archived entries
-archive_count=0
-if [[ -d "$KNOWLEDGE_DIR/archive" ]]; then
-    for f in "$KNOWLEDGE_DIR/archive"/*.md; do
-        [[ -f "$f" ]] && archive_count=$((archive_count + 1))
+# Count legacy entries still in config/knowledge/
+legacy_count=0
+if [[ -d "$KNOWLEDGE_DIR" ]]; then
+    for f in "$KNOWLEDGE_DIR"/*.md; do
+        [[ "$(basename "$f")" == "README.md" ]] && continue
+        [[ -f "$f" ]] && legacy_count=$((legacy_count + 1))
     done
 fi
 
-msg="interknow: ${count} knowledge entries"
-if (( archive_count > 0 )); then
-    msg="${msg} (${archive_count} archived)"
+if (( count == 0 && legacy_count == 0 )); then
+    exit 0
+fi
+
+msg="interknow: ${count} knowledge entries (docs/solutions/)"
+if (( legacy_count > 0 )); then
+    msg="${msg}, ${legacy_count} legacy (config/knowledge/)"
 fi
 
 cat <<EOF

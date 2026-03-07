@@ -1,6 +1,10 @@
-# Knowledge Layer
+# Knowledge Layer (Deprecated)
 
-Knowledge entries discovered during reviews. Each file is a markdown document with YAML frontmatter. Canonical location: interknow plugin (was interflux `config/flux-drive/knowledge/`).
+> **Deprecated:** Knowledge entries have been converged into `docs/solutions/` (see Demarch-7xs, PHILOSOPHY.md § Memory Architecture). All 8 entries from this directory have been migrated to `docs/solutions/best-practices/`. New entries should be created via `/clavain:compound`, which writes to `docs/solutions/` with the converged schema.
+>
+> This directory is kept as a read-only archive. Do not add new entries here.
+
+Knowledge entries discovered during reviews. Each file is a markdown document with YAML frontmatter. Canonical location: `docs/solutions/` (was interknow `config/knowledge/`, was interflux `config/flux-drive/knowledge/`).
 
 ## Entry format
 
