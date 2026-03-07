@@ -51,8 +51,14 @@ Only independent confirmations refresh the decay timer.
 
 ## Decay rules
 
-- Entries not independently confirmed in **10 reviews** get archived
-- Archived entries are moved to `config/knowledge/archive/`
+Two independent decay triggers (whichever fires first):
+
+- **Review-count decay:** Entries not independently confirmed in **10 reviews** get archived
+- **Time-based decay:** Entries with `lastConfirmed` older than **180 days** get archived (staleness check)
+
+Both rules follow intermem's standard pattern: grace period (first 10 reviews or 180 days) → linear decay → hysteresis (require 2 consecutive staleness checks before archival to prevent single-sweep false positives).
+
+- Archived entries are moved to `config/knowledge/archive/` (or `docs/solutions/archive/` for converged entries)
 - Archive preserves the full entry for future reference
 
 ## Sanitization rules
