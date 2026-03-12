@@ -104,7 +104,7 @@ Query knowledge for a topic. Domain-aware filtering narrows results. Returns mat
 Reports knowledge stats as `additionalContext`: `"interknow: N knowledge entries (M archived)"`.
 
 ### qmd MCP Server
-Optional semantic search via `vsearch` tool. Launched via `scripts/launch-qmd.sh`. Gracefully exits if `qmd` not installed (`bun install -g qmd`). Skills work without it (reduced to filename/heading matching).
+Optional semantic search via `vsearch` tool. Launched via `scripts/launch-qmd.sh`. Gracefully exits if `qmd` not installed (`bun install -g @tobilu/qmd`). Skills work without it (reduced to filename/heading matching). Source: https://github.com/tobi/qmd
 
 ## Integration Points
 

@@ -11,7 +11,8 @@ done
 
 if ! command -v qmd &>/dev/null; then
     echo "qmd not found. interknow will work without it but semantic knowledge search will be unavailable." >&2
-    echo "To install: build qmd from source and place the binary on your PATH." >&2
+    echo "To install: bun install -g @tobilu/qmd  (or: npm install -g @tobilu/qmd)" >&2
+    echo "Source: https://github.com/tobi/qmd" >&2
     # Exit cleanly so Claude Code doesn't retry in a loop
     exit 0
 fi
