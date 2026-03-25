@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # interknow SessionStart hook — report knowledge stats from docs/solutions/
-set -euo pipefail
+set -uo pipefail
+trap 'exit 0' ERR
 
 # Primary: docs/solutions/ (converged knowledge store)
 SOLUTIONS_DIR="docs/solutions"
