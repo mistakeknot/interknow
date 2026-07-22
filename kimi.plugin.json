@@ -1,0 +1,35 @@
+{
+  "name": "interknow",
+  "version": "0.1.5",
+  "description": "Knowledge compounding — durable pattern repository with provenance tracking, temporal decay, and semantic retrieval via qmd.",
+  "license": "MIT",
+  "keywords": [
+    "knowledge",
+    "compounding",
+    "patterns",
+    "semantic-search",
+    "qmd",
+    "mcp-server"
+  ],
+  "author": "mistakeknot",
+  "interface": {
+    "displayName": "interknow",
+    "shortDescription": "Knowledge compounding — durable pattern repository with provenance tracking, temporal decay, and semantic retrieval v..."
+  },
+  "skills": "./skills/",
+  "mcpServers": {
+    "qmd": {
+      "command": "./scripts/launch-qmd.sh",
+      "args": [
+        "mcp"
+      ]
+    }
+  },
+  "hooks": [
+    {
+      "event": "SessionStart",
+      "command": "${KIMI_PLUGIN_ROOT}/hooks/session-start.sh",
+      "timeout": 5
+    }
+  ]
+}
