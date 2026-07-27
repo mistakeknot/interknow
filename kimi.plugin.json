@@ -1,6 +1,6 @@
 {
   "name": "interknow",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Knowledge compounding — durable pattern repository with provenance tracking, temporal decay, and semantic retrieval via qmd.",
   "license": "MIT",
   "keywords": [
